@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>TIC TAC TOE</title>
+    <!-- loads CSS file -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+<body>
+
+<h1>TIC TAC TOE</h1>
+
+
+<div>
+<p> Hello Players!</p>
+<p id="name-here">What is Your Name?</p>
+<input type="text" id="name-word"/>
+<button id="say-name">Submit</button>
+</div>
+
+
+<label for="one-or-two">One or Two Players?</label>
+<input type="number" id="one-or-two" min="1" max="2">
+<br>
+<br>
+<label for="name-player-one">Name Player One</label>
+<input type="text" class="player" id="name-player-one" playerOne="name-player-one">
+<input type="submit" id="submit1" value="Submit">
+<br>
+<br>
+<label for="name-player-two">Name Player Two</label>
+<input type="text" class="player" id="name-player-two" playerTwo="name-player-two">
+<input type="submit" id="submit2" value="Submit">
+<br>
+
+
+<button type="play-game" id="play-game">Play Game</button>
+<button type="reset-game" id="reset-game">Reset Game</button>
+
+<div class="board">
+<div id="square1" class="square"><input type="text" class="xOrO"><span></span></div>
+<div id="square2" class="square"><input type="text" class="xOrO"><span></span></div>
+<div id="square3" class="square"><input type="text" class="xOrO"><span></span></div>
+<div id="square4" class="square"><input type="text" class="xOrO"><span></span></div>
+<div id="square5" class="square"><input type="text" class="xOrO"><span></span></div>
+<div id="square6" class="square"><input type="text" class="xOrO"><span></span></div>
+<div id="square7" class="square"><input type="text" class="xOrO"><span></span></div>
+<div id="square8" class="square"><input type="text" class="xOrO"><span></span></div>
+<div id="square9" class="square"><input type="text" class="xOrO"><span></span></div> 
+  
+
+</div>
+
+<br>
+<!--a table in case using a table, undecided-->
+<table>
+<tr>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+</table>
+
+
+</body>
+
+<!-- loads JavaScript file -->
+<script type="text/javascript" src="app.js"></script>
+
+</html>

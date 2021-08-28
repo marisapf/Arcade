@@ -1,0 +1,95 @@
+
+body {
+    box-sizing: border-box;
+    border: 10px solid indigo;
+    padding:100px;
+    background-color: orchid;
+}
+
+h1 {
+    font:normal bolder 4em Tahoma;
+    color:indigo;
+}
+
+
+label {
+    font: normal bold 1.3em Tahoma;
+    color:darkmagenta;
+    background-color:thistle;
+    border: 3px solid darkmagenta;
+    padding:5px;
+    
+}
+
+input { 
+    background-color:lightpink;
+    padding:10px;
+ }
+
+p  {
+    font: normal bold 1.5em Tahoma;
+    color: darkmagenta;
+}
+
+   div  {
+    margin: 20px;
+    }
+
+ button { 
+     font: normal bold 1.3em Tahoma;
+     color:darkviolet;
+     border: 2px solid darkviolet;
+     padding: 5px;
+     background-color: thistle;
+     margin:30px;
+
+ }
+
+
+
+.board {
+    display:grid;
+    grid-template-columns: repeat(3,auto);
+    width: 360px;
+    height: 360px;
+    background-color:plum;
+    margin: 25px;
+
+}
+
+.square {
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 115px;
+    height: 115px;
+    border: 3px solid darkviolet;
+    margin: auto;
+}
+
+.square:hover { 
+    background-color: slateblue;
+}
+
+input.xOrO {
+    width:30px;
+    height: 30px;
+    margin:auto;
+    font:normal bold 2em Tahoma;
+    color:indigo;
+}
+
+table { 
+    height:240px;
+    width:240px;
+    background-color:plum;
+    border: 3px solid darkviolet;
+}
+
+td {
+    border: 2px solid darkviolet;
+}
+td:hover { 
+    background-color: slateblue;
+}
+
