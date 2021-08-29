@@ -18,7 +18,7 @@ const playerTwoName = document.getElementById("name-player-two").value;
 //function to greet player by name
 function greetPlayer() {
     const playerName = document.getElementsByClassName("player").value;
-      return "Hi " +  playerName + " ! ";
+    return "Hi " +  playerName + " ! ";
  }
 
  if (playerOneName) return greetPlayer();
@@ -55,7 +55,7 @@ function choosePlayer (playerOneName, playerTwoName) {
   if (!playerTwoName) return "Player 1 goes first";
 
   if (playerOneName && playerTwoName) 
-   let oneOrTwo = Math.floor(Math.random() * 2) + 1;   //? problem here
+   let oneOrTwo = Math.floor(Math.random() * 2 + 1);   //? problem here
   
   if (oneOrTwo = 1) return "Player 1 goes first and Player 2 chooses X or O first.";
      return "Player 2 goes first and Player 1 chooses X or O first."
@@ -75,58 +75,61 @@ function onlyXorO() {
   squareInput.addEventListener('click', function() {
     if (squareInput !== 'O' || squareInput !== 'X') return "X or O";
     if (squareInput === 'x' || squareInput === 'o') return squareInput.toUpperCase();
-  return squareInput = squareInput.innerText;
+  return squareInput;
  });
 
  let squareChar = [];  //array to store 9 characters, Xs or Os
 
- let squareOneContent = document.getElementById("square1").innerText;
+ let squareOneContent = document.getElementById("square1");
   if (squareOneContent !== "") return "try an empty square";
   if (squareOneContent !== 'X' || squareOneContent !== 'O') 
     return "X or O";
    squareChar.push(squareOneContent);
 
- let squareTwoContent = document.getElementById("square2").innerText;
+ let squareTwoContent = document.getElementById("square2");
    if (squareTwoContent !== "") return "try an empty square";
    if (squareTwoContent !== 'X' || squareOneContent !== 'O' ) return "X or O";
      squareChar.push(squareTwoContent);
      
- let squareThreeContent = document.getElementById("square3").innerText;
+ let squareThreeContent = document.getElementById("square3");
   if (squareThreeContent !== "") return "try an empty square";
   if (squareThreeContent !== 'X' || squareThreeContent !== 'O' ) return "X or O";
     squareChar.push(squareThreeContent);
   
- let squareFourContent = document.getElementById("square4").innerText;
+ let squareFourContent = document.getElementById("square4");
   if (squareFourContent !== "") return "try an empty square";
   if (squareFourContent !== 'X' || squareThreeContent !== 'O' ) return "X or O";
         squareChar.push(squareFourContent);
  
- let squareFiveContent = document.getElementById("square5").innerText;
+ let squareFiveContent = document.getElementById("square5");
   if (squareFiveContent !== "") return "try an empty square";
   if (squareFiveContent !== 'X' || squareFiveContent !== 'O' ) return "X or O";
     squareChar.push(squareThreeContent);
 
- let squareSixContent = document.getElementById("square6").innerText;
-   if (squareSixContentif !== "") return "try an empty square"; )
+ let squareSixContent = document.getElementById("square6");
+   if (squareSixContentif !== "") return "try an empty square"; 
    if (squareSixContent !== 'X' || squareSixContent !== 'O' ) return "X or O";
    squareChar.push(squareSixContent);
 
- let squareSevenContent = document.getElementById("square7").innerText;
+ let squareSevenContent = document.getElementById("square7");
   if (squareSevenContent !== "") return "try an empty square";
   if (squareSevenContent !== 'X' || squareSevenContent !== 'O' ) return "X or O";
     squareChar.push(squareSevenContent);
       
- let squareEightContent = document.getElementById("square8").innerText;
+ let squareEightContent = document.getElementById("square8");
   if (squareEightContent !== "") return "try an empty square";
   if (squareEightContent !== 'X' || squareEightContent !== 'O' ) return "X or O";
      squareChar.push(squareThreeContent);
 
- let squareNineContent = document.getElementById("square9").innerText;
+ let squareNineContent = document.getElementById("square9");
   if (squareNineContent !== "") return "try an empty square";
   if (squareNineContent !== 'X' || squareNineContent !== 'O' ) return "X or O";
     squareChar.push(squareNineContent);
 
 //check to see if there are Xs or Os in a row
+let winLoseMessage = "";
+const endGameMessage = document.getElementById(win-lose-tie);
+
 if (squareChar[0] === squareChar[1] === squareChar[0] === "O" ||
     squareChar[3] === squareChar[4] === squareChar[5] === "O" ||
     squareChar[6] === squareChar[7] === squareChar[8] === "O" ||
@@ -135,7 +138,8 @@ if (squareChar[0] === squareChar[1] === squareChar[0] === "O" ||
     squareChar[2] === squareChar[5] === squareChar[8] === "O" ||
     squareChar[0] === squareChar[4] === squareChar[8] === "O" ||
     squareChar[2] === squareChar[4] === squareChar[6] === "O" )
-  return "Os Won!";
+
+    winLoseMessage = "Os win!";
 
   if (squareChar[0] === squareChar[1] === squareChar[0] === "X" ||
       squareChar[3] === squareChar[4] === squareChar[5] === "X" ||
@@ -145,8 +149,11 @@ if (squareChar[0] === squareChar[1] === squareChar[0] === "O" ||
       squareChar[2] === squareChar[5] === squareChar[8] === "X" ||
       squareChar[0] === squareChar[4] === squareChar[8] === "X" ||
       squareChar[2] === squareChar[4] === squareChar[6] === "X" )
-    return "Xs won!"
-    else return "It's a tie.";
+    
+      winLoseMessage =  "Xs won!";
+
+  else winLoseMessage = "It's a tie.";
+  winLoseMessage = endGameMessage.innerText;
 }
 
 //remove contents from squares, reset game 

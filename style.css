@@ -22,7 +22,7 @@ label {
 }
 
 input { 
-    background-color:lightpink;
+    background-color:thistle;
     padding:10px;
  }
 
@@ -31,8 +31,9 @@ p  {
     color: darkmagenta;
 }
 
-   div  {
-    margin: 20px;
+   div.board {
+      
+         margin: 20px;
     }
 
  button { 
