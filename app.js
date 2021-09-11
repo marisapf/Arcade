@@ -1,134 +1,154 @@
-//code between lines 4 and 12 doesn't work. trying to get code 
-//to show up in browser
-
+//Trial greet message for one person
 const nameHere = document.getElementById("name-here");
 const nameWord = document.getElementById("name-word");
 const sayName = document.getElementById("say-name");
 
 sayName.addEventListener('click', function(){
- if (nameWord.value !==""){
-   nameHere.innerText = nameWord.value;
- } else {nameHere.innerText = "what is your name?"}
+ if (nameWord.value !=="") nameHere.innerText = "Hi " + nameWord.value;
+  else nameHere.innerText = "Enter your name."
 });
 
 //create two variables to store player names
-const playerOneName = document.getElementById("name-player-one").value;
-const playerTwoName = document.getElementById("name-player-two").value;
+const playerOneName = document.getElementById("name-player-one");
+const playerTwoName = document.getElementById("name-player-two");
+//place in html/broswer for the text of greeting players
+const greetOneHolder = document.getElementById("greet-one-holder");
+const greetTwoHolder = document.getElementById("greet-two-holder");
+//variable with event listener
+const submitOne = document.getElementById("submit1");
+const submitTwo = document.getElementById("submit2");
 
-//function to greet player by name
+//greets player one
+submitOne.addEventListener('click', function(){
+ if (playerOneName.value !=="") greetOneHolder.innerText = "Hi " + playerOneName.value;
+  else greetOneHolder.innerText = "Enter your name."
+});
+//greets player two 
+submitTwo.addEventListener('click', function(){
+  if (playerTwoName.value !=="") greetTwoHolder.innerText = "Hi " + playerTwoName.value;
+   else greetTwoHolder.innerText = "Enter your name."
+ });
+
+//function to greet player by name, this function is not used
+//Would like to use this function that takes player name as argument
+//and use with submitOne and submitTwo above, needs event listener
 function greetPlayer() {
-    const playerName = document.getElementsByClassName("player").value;
-    return "Hi " +  playerName + " ! ";
+    let player= document.getElementsByClassName("player");
+    let greetingHolder = document.getElementsByClassName("greeting-holder");
+    greetingHolder.innerText = "Hi " +  player + " ! ";
  }
 
- if (playerOneName) return greetPlayer();
- if (playerTwoName) return greetPlayer();
- 
-//greets one or two players
-input.addEventListener('click', function() {
-  const numPlayers = document.getElementById("one-or-two");
-  if (numPlayers = 1) {
-   let input1 = document.getElementById("submit1").value;
-     input1.addEventListener('click', function() {
-   let greeting = greetPlayer();
-      return greeting;
-     });  
-   
-   } else if (numPlayers = 2 && playerTwoName) {
-             let input1 = document.getElementById("submit1").value;
-             input1.addEventListener('click', function() {
-             let greeting = greetPlayer();
-             return greeting;
-             });
-             let input2 = document.getElementById("submit2").value; 
-             input2.addEventListener('click', function(){
-             let greeting = greetPlayer();
-               return greeting; 
-             });
-          }
+ //there must be two players because...?
+ //if there is no player2, how do I set up player two to be the computer? 
+const numPlayers = document.getElementById("number-of");
+const oneOrTwo = document.getElementById("one-or-two");
+const playerMessage = document.getElementById("player-message");
+numPlayers.addEventListener('click', function() {
+  if (oneOrTwo.value < 2) playerMessage.innerText = "You need two players." 
+  else if (oneOrTwo.value > 2) playerMessage.innerText = "You can only have two players."
+  else if (oneOrTwo.value !== "number") playerMessage.innerText = "Invalid number."
+  else playerMessage.innerText = "Hello players!"
+  console.log(oneOrTwo.value)
+      
   });
 
-//if there is no player2, how do I set up player two to be the computer? 
-
 //choose who goes first if there are two players 
-function choosePlayer (playerOneName, playerTwoName) {
-  if (!playerTwoName) return "Player 1 goes first";
+//have a place to put those names in html/browser
+const whoFirst = document.getElementById("who-first-holder");
+const whichPlayerFirst = document.getElementById("which-player-first");
 
-  if (playerOneName && playerTwoName) 
-   let oneOrTwo = Math.floor(Math.random() * 2 + 1);   //? problem here
-  
-  if (oneOrTwo = 1) return "Player 1 goes first and Player 2 chooses X or O first.";
-     return "Player 2 goes first and Player 1 chooses X or O first."
-}
+whichPlayerFirst.addEventListener('click', function() {
+  let oneTwo = Math.floor(Math.random() * 2 + 1); 
+  if (oneTwo === 1) whoFirst.innerText = playerOneName.value + " goes first and " + playerTwoName.value + " chooses X or O first.";
+   whoFirst.innerText = playerTwoName.value + " goes first and " + playerOneName.value + " chooses X or O first.";
+  //console.log(oneTwo);
+  });
 
 //Need a function here, players can't choose the same letter
 //whoever chooses X, O is assigned to the other or vice versa
+//place to put in html/browser
 
-//Need a function to show if a square is already taken
-
-//Only X or O allowed as inputs 
-//something is wrong here, too
+const whoXorO = document.getElementById("X-or-O-holder");
+//game message who is X, O
+const squareContent = document.querySelectorAll(".square");
+//variable that is the content of squares 
+const squareMessage = document.getElementById("square-message");
+//where to put error messages 
+let tryOtherSquare = document.getElementById("try-empty-square");
 //tells player if square is already taken 
-function onlyXorO() {
-  
- let squareInput = document.getElementsByClassName("square");
-  squareInput.addEventListener('click', function() {
-    if (squareInput !== 'O' || squareInput !== 'X') return "X or O";
-    if (squareInput === 'x' || squareInput === 'o') return squareInput.toUpperCase();
-  return squareInput;
- });
+let squareChar = [];  //array to store 9 characters, Xs or Os
 
- let squareChar = [];  //array to store 9 characters, Xs or Os
+squareContent.addEventListener('select', function(){
+  if (squareContent.innerText === 'x' || squareContent.innerText === 'o') squareMessage.innerText = "please use upper case X or O."
+  if (squareContent.innerText !== 'O' || squareContent.innerText !== 'X') squareMessage.innerText = "X or O only."
+  return squareContent.innerText;
+});
 
- let squareOneContent = document.getElementById("square1");
-  if (squareOneContent !== "") return "try an empty square";
-  if (squareOneContent !== 'X' || squareOneContent !== 'O') 
-    return "X or O";
-   squareChar.push(squareOneContent);
+let squareOneContent = document.getElementById("square1");
+ if (squareOneContent !== "") 
+  tryOtherSquare.innerText = "Try an empty square.";
+ if (squareOneContent !== 'X' || squareOneContent !== 'O')
+  squareMessage.innerText = "X or O only."
+  squareChar.push(squareOneContent);
 
- let squareTwoContent = document.getElementById("square2");
-   if (squareTwoContent !== "") return "try an empty square";
-   if (squareTwoContent !== 'X' || squareOneContent !== 'O' ) return "X or O";
-     squareChar.push(squareTwoContent);
+let squareTwoContent = document.getElementById("square2");
+ if (squareTwoContent !== "") 
+  tryOtherSquare.innerText = "Try an empty square.";
+ if (squareTwoContent !== 'X' || squareTwoContent !== 'O')
+ squareMessage.innerText = "X or O only."
+  squareChar.push(squareTwoContent);
+
+let squareThreeContent = document.getElementById("square3");
+ if (squareThreeContent !== "") 
+  tryOtherSquare.innerText = "Try an empty square.";
+ if (squareThreeContent !== 'X' || squareThreeContent !== 'O')
+  squareMessage.innerText = "X or O only."
+  squareChar.push(squareThreeContent);
      
- let squareThreeContent = document.getElementById("square3");
-  if (squareThreeContent !== "") return "try an empty square";
-  if (squareThreeContent !== 'X' || squareThreeContent !== 'O' ) return "X or O";
-    squareChar.push(squareThreeContent);
+let squareFourContent = document.getElementById("square4");
+  if (squareFourContent !== "") 
+   tryOtherSquare.innerText = "Try an empty square.";
+  if (squareFourContent !== 'X' || squareFourContent !== 'O')
+   squareMessage.innerText = "X or O only."
+    squareChar.push(squareFourContent);
   
- let squareFourContent = document.getElementById("square4");
-  if (squareFourContent !== "") return "try an empty square";
-  if (squareFourContent !== 'X' || squareThreeContent !== 'O' ) return "X or O";
-        squareChar.push(squareFourContent);
+let squareFiveContent = document.getElementById("square5");
+ if (squareFiveContent !== "") 
+  tryOtherSquare.innerText = "Try an empty square.";
+ if (squareFiveContent !== 'X' || squareFiveContent !== 'O')
+  squareMessage.innerText = "X or O only."
+  squareChar.push(squareFiveContent);
  
- let squareFiveContent = document.getElementById("square5");
-  if (squareFiveContent !== "") return "try an empty square";
-  if (squareFiveContent !== 'X' || squareFiveContent !== 'O' ) return "X or O";
-    squareChar.push(squareThreeContent);
-
- let squareSixContent = document.getElementById("square6");
-   if (squareSixContentif !== "") return "try an empty square"; 
-   if (squareSixContent !== 'X' || squareSixContent !== 'O' ) return "X or O";
+let squareSixContent = document.getElementById("square6");
+  if (squareSixContent !== "") 
+   tryOtherSquare.innerText = "Try an empty square.";
+  if (squareSixContent !== 'X' || squareSixContent !== 'O')
+  squareMessage.innerText = "X or O only."
    squareChar.push(squareSixContent);
 
  let squareSevenContent = document.getElementById("square7");
-  if (squareSevenContent !== "") return "try an empty square";
-  if (squareSevenContent !== 'X' || squareSevenContent !== 'O' ) return "X or O";
-    squareChar.push(squareSevenContent);
+  if (squareSevenContent !== "") 
+   tryOtherSquare.innerText = "Try an empty square.";
+ if (squareSevenContent !== 'X' || squareSevenContent !== 'O')
+ squareMessage.innerText = "X or O only."
+  squareChar.push(squareSevenContent);
       
  let squareEightContent = document.getElementById("square8");
-  if (squareEightContent !== "") return "try an empty square";
-  if (squareEightContent !== 'X' || squareEightContent !== 'O' ) return "X or O";
-     squareChar.push(squareThreeContent);
+  if (squareEightContent !== "") 
+   tryOtherSquare.innerText = "Try an empty square.";
+  if (squareEightContent !== 'X' || squareEightContent !== 'O')
+  squareMessage.innerText = "X or O only." 
+   squareChar.push(squareEightContent);
 
  let squareNineContent = document.getElementById("square9");
-  if (squareNineContent !== "") return "try an empty square";
-  if (squareNineContent !== 'X' || squareNineContent !== 'O' ) return "X or O";
-    squareChar.push(squareNineContent);
+ if (squareNineContent !== "") 
+  tryOtherSquare.innerText = "Try an empty square.";
+ if (squareNineContent !== 'X' || squareNineContent !== 'O')
+ squareMessage.innerText = "X or O only."
+  squareChar.push(squareNineContent);
 
 //check to see if there are Xs or Os in a row
-let winLoseMessage = "";
-const endGameMessage = document.getElementById(win-lose-tie);
+const endGameMessage = document.getElementById("end-game-message");
 
 if (squareChar[0] === squareChar[1] === squareChar[0] === "O" ||
     squareChar[3] === squareChar[4] === squareChar[5] === "O" ||
@@ -139,7 +159,7 @@ if (squareChar[0] === squareChar[1] === squareChar[0] === "O" ||
     squareChar[0] === squareChar[4] === squareChar[8] === "O" ||
     squareChar[2] === squareChar[4] === squareChar[6] === "O" )
 
-    winLoseMessage = "Os win!";
+endGameMessage.innerText = "Os win!";
 
   if (squareChar[0] === squareChar[1] === squareChar[0] === "X" ||
       squareChar[3] === squareChar[4] === squareChar[5] === "X" ||
@@ -150,17 +170,51 @@ if (squareChar[0] === squareChar[1] === squareChar[0] === "O" ||
       squareChar[0] === squareChar[4] === squareChar[8] === "X" ||
       squareChar[2] === squareChar[4] === squareChar[6] === "X" )
     
-      winLoseMessage =  "Xs won!";
+endGameMessage.innerText =  "Xs won!";
 
-  else winLoseMessage = "It's a tie.";
-  winLoseMessage = endGameMessage.innerText;
-}
+else endGameMessage.innerText = "It's a tie.";
+ 
+
 
 //remove contents from squares, reset game 
-function reset () {
- const resetGame = document.getElementById("reset-game");
- resetGame.addEventListener('click', function(clickEvent){
-  if (clickEvent.target.matches('O') || clickEvent.target.matches("X"))
+//not sure which to use? 
+
+
+//I did a reset function and somehow other parts of code didn't work 
+//so it is commented out 
+
+
+/* const resetGame = document.getElementById("reset-game");
+ resetGame.addEventListener('click', function(){
+  squareChar = [];
+  squareContent.innerText = "";
+  nameWord.value = "";
+  nameHere.innerText = "";
+  playerOneName.value = "";
+  playerTwoName.value = "";
+  greetOneHolder.innerText = "";
+  greetTwoHolder.innerText = "";
+  oneOrTwo.value = "";
+  whoFirst.innerText = "";
+  endGameMessage.innerText = "";
+ });
+*/
+
+const resetGame = document.getElementById("reset-game");
+ resetGame.addEventListener('click', function() {
+  squareOneContent.innerText = "";
+  squareTwoContent.innerText = "";
+  squareThreeContent.innerText = "";
+  squareFourContent.innerText = "";
+  squareFiveContent.innerText = "";
+  squareSixContent.innerText = "";
+  squareSevenContent.innerText = "";
+  squareEightContent.innerText = "";
+  squareNineContent.innerText = "";
+});
+
+resetGame.addEventListener('click', function() {
+if (clickEvent.target.matches('O') || clickEvent.target.matches("X"))
   clickEvent.target.innerText.remove(squareOneContent);
   clickEvent.target.innerText.remove(squareTwoContent);
   clickEvent.target.innerText.remove(squareThreeContent);
@@ -172,7 +226,7 @@ function reset () {
   clickEvent.target.innerText.remove(squareNineContent);
  return resetGame;
  });
-}     
+     
 
 
 

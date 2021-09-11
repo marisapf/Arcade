@@ -10,46 +10,68 @@
 
 <h1>TIC TAC TOE</h1>
 
-
 <div>
 <p> Hello Players!</p>
-<p id="name-here">What is Your Name?</p>
+<p>What is Your Name?</p>
+
+<!--player will enter name and submit button-->
 <input type="text" id="name-word"/>
 <button id="say-name">Submit</button>
+<!--place for game to say greeting and player name-->
+<p type="text" id="name-here"></p> 
 </div>
 
+<!--place to enter players-->
+<label>One or Two Players?</label>
+<input type="text" id="one-or-two">
+<button id="number-of" value="Submit">Submit</button>
+<p id="player-message"></p>
 
-<label for="one-or-two">One or Two Players?</label>
-<input type="number" id="one-or-two" min="1" max="2">
-<br>
-<br>
+<!--place for first player-->
 <label for="name-player-one">Name Player One</label>
 <input type="text" class="player" id="name-player-one" playerOne="name-player-one">
-<input type="submit" id="submit1" value="Submit">
-<br>
-<br>
+<button type="submit" id="submit1" value="Submit">Submit</button>
+<!--place for game to greet player one-->
+<p type="text" class="greeting-holder" id="greet-one-holder"></p>
+
+<!--place for second player-->
 <label for="name-player-two">Name Player Two</label>
 <input type="text" class="player" id="name-player-two" playerTwo="name-player-two">
-<input type="submit" id="submit2" value="Submit">
+<button type="submit" id="submit2" value="Submit">Submit</button>
+<!--place for game to greet player two-->
+<p type="text" class="greeting-holder" id="greet-two-holder"></p>
+
+
+<!--place for game to put who goes first-->
+<p>Who is first?</p>
+<button type="submit" id="which-player-first">Click here</button>
+<p type="text" id="who-first-holder"></p>
+
+<!--place for game to say who is X and O-->
+<p type="text" id="X-or-O-holder"></p>
+
+<button type="play" id="play-game">Play Game</button>
+
+<button type="reset" id="reset-game">Reset Game</button>
 <br>
+<!--place for game result message-->
+<p id="end-game-message"></p> 
+<!--place for message if player tries an occupied square-->
+<p id="try-empty-square"></p>
 
-
-<button type="play-game" id="play-game">Play Game</button>
-<button type="reset-game" id="reset-game">Reset Game</button>
-
-<p id="win-lose-tie"></p>
-
+<!--place for message if player tries to use character other than X or O-->
+<p id="square-message"></p>
 
 <div class="board">
-<div id="square1" class="square"><input type="text" class="xOrO"><span></span></div>
-<div id="square2" class="square"><input type="text" class="xOrO"><span></span></div>
-<div id="square3" class="square"><input type="text" class="xOrO"><span></span></div>
-<div id="square4" class="square"><input type="text" class="xOrO"><span></span></div>
-<div id="square5" class="square"><input type="text" class="xOrO"><span></span></div>
-<div id="square6" class="square"><input type="text" class="xOrO"><span></span></div>
-<div id="square7" class="square"><input type="text" class="xOrO"><span></span></div>
-<div id="square8" class="square"><input type="text" class="xOrO"><span></span></div>
-<div id="square9" class="square"><input type="text" class="xOrO"><span></span></div> 
+<div id="square1" class="square"><span></span></div>
+<div id="square2" class="square"><span></span></div>
+<div id="square3" class="square"><span></span></div>
+<div id="square4" class="square"><span></span></div>
+<div id="square5" class="square"><span></span></div>
+<div id="square6" class="square"><span></span></div>
+<div id="square7" class="square"><span></span></div>
+<div id="square8" class="square"><span></span></div>
+<div id="square9" class="square"><span></span></div> 
   
 </div>
 

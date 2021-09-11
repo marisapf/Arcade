@@ -21,10 +21,29 @@ label {
     
 }
 
+#one-or-two {
+    font:normal bold 1.3em Tahoma;
+    color:darkslateblue;
+    background-color: thistle;
+    width: 30px;
+    height: 20px;
+}
+#name-word {
+    font:normal bold 1.3em Tahoma;
+    color:darkslateblue;
+    background-color: thistle;
+    width: 250px;
+}
+
 input { 
     background-color:thistle;
     padding:10px;
  }
+ 
+ .player {
+    font:normal bold 1.3em Tahoma;
+    color:darkslateblue;
+}
 
 p  {
     font: normal bold 1.5em Tahoma;
@@ -32,7 +51,6 @@ p  {
 }
 
    div.board {
-      
          margin: 20px;
     }
 
@@ -41,12 +59,9 @@ p  {
      color:darkviolet;
      border: 2px solid darkviolet;
      padding: 5px;
-     background-color: thistle;
+     background-color:thistle;
      margin:30px;
-
  }
-
-
 
 .board {
     display:grid;
@@ -55,7 +70,6 @@ p  {
     height: 360px;
     background-color:plum;
     margin: 25px;
-
 }
 
 .square {
